@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,70 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FindYourZodiacSign" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 21 May" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8xR-fq-df6">
+                                <rect key="frame" x="82.5" y="96" width="229.5" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="VIh-B1-FwR"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Your Birthdate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRt-oK-Yqo">
+                                <rect key="frame" x="82.5" y="40" width="210" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9Ur-a1-xZx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1i-lZ-GPl">
+                                <rect key="frame" x="132.5" y="176.5" width="111" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hF4-3e-Bpu"/>
+                                </constraints>
+                                <state key="normal" title="Show the Result"/>
+                                <connections>
+                                    <action selector="showZodiac:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JA6-4f-vVC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Zodiac is: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxG-la-QFt">
+                                <rect key="frame" x="82.5" y="234.5" width="229.5" height="35.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.84796375036239624" green="0.89961129426956177" blue="0.9569815993309021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nRt-oK-Yqo" secondAttribute="trailing" constant="82.5" id="0rR-7h-1p8"/>
+                            <constraint firstItem="nRt-oK-Yqo" firstAttribute="centerX" secondItem="P1i-lZ-GPl" secondAttribute="centerX" id="97Z-1c-POf"/>
+                            <constraint firstItem="P1i-lZ-GPl" firstAttribute="top" secondItem="8xR-fq-df6" secondAttribute="bottom" constant="49" id="Djl-bN-WCL"/>
+                            <constraint firstItem="8xR-fq-df6" firstAttribute="trailing" secondItem="GxG-la-QFt" secondAttribute="trailing" id="GIV-gh-7Gj"/>
+                            <constraint firstItem="8xR-fq-df6" firstAttribute="top" secondItem="nRt-oK-Yqo" secondAttribute="bottom" constant="35" id="May-9J-VJB"/>
+                            <constraint firstItem="8xR-fq-df6" firstAttribute="leading" secondItem="GxG-la-QFt" secondAttribute="leading" id="VMc-il-dVw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8xR-fq-df6" secondAttribute="trailing" constant="63" id="WN2-HS-xMR"/>
+                            <constraint firstItem="8xR-fq-df6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="82.5" id="eTf-Pi-6b2"/>
+                            <constraint firstItem="GxG-la-QFt" firstAttribute="top" secondItem="P1i-lZ-GPl" secondAttribute="bottom" constant="28" id="n7r-tY-NqS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GxG-la-QFt" secondAttribute="bottom" constant="397" id="tbP-GL-7K9"/>
+                            <constraint firstItem="nRt-oK-Yqo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="zKl-Am-DY1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="birthDateText" destination="8xR-fq-df6" id="frg-PV-9hS"/>
+                        <outlet property="resultLabel" destination="GxG-la-QFt" id="zDZ-A6-eZp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
