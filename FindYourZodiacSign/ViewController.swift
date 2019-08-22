@@ -3,6 +3,7 @@
 //  FindYourZodiacSign
 //
 //  Created by Ege Sucu on 21.03.2018.
+//  Updated on 22.08.2019
 //  Copyright © 2018 Ege Sucu. All rights reserved.
 //
 
@@ -12,98 +13,76 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var birthDateText: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var showResultButton: UIButton!
     
-    var zodiac : String = ""
-    var birthDate = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        setupUI()
+        
     }
     
-    func findZodiac(){
+    
+    private func setupUI(){
         
-        birthDate = birthDateText.text!
+        self.view.backgroundColor = UIColor(named: "Background")
+        showResultButton.backgroundColor = UIColor(named: "ButtonBackground")
+        showResultButton.clipsToBounds = true
+        showResultButton.layer.cornerRadius = 5
+        showResultButton.setTitleColor(UIColor(named: "ButtonTextColor"), for: .normal)
+        
+    }
+    
+    private func findZodiac()->String{
+        
+        guard let birthDate = birthDateText.text else {return "No Input Given"}
+        
         
         switch birthDate.hasSuffix("") {
         case (birthDate.hasSuffix("January")):
-            if (birthDate.prefix(2) >= "20" ) {
-                zodiac = "Aquarius"
-            } else {
-                zodiac = "Capricorn"
-            }
+            return (birthDate.prefix(2)>="20") ? "Aquarius" : "Capricorn"
+            
         case birthDate.hasSuffix("February"):
-            if (birthDate.prefix(2) >= "18" ) {
-                zodiac = "Pisces"
-            } else {
-                zodiac = "Aquarius"
-            }
+            return (birthDate.prefix(2)>="18") ? "Pisces" : "Aquarius"
+     
         case birthDate.hasSuffix("March"):
-            if (birthDate.prefix(2) >= "20" ) {
-                zodiac = "Aries"
-            } else {
-                zodiac = "Pisces"
-            }
+            return (birthDate.prefix(2)>="20") ? "Aries" : "Pisces"
+           
         case birthDate.hasSuffix("April"):
-            if (birthDate.prefix(2) >= "20" ) {
-                zodiac = "Taurus"
-            } else {
-                zodiac = "Aries"
-            }
+            return (birthDate.prefix(2)>="20") ? "Taurus" : "Aries"
+            
         case birthDate.hasSuffix("May"):
-            if (birthDate.prefix(2) >= "21" ) {
-                zodiac = "Gemini"
-            } else {
-                zodiac = "Taurus"
-            }
+            return (birthDate.prefix(2)>="21") ? "Gemini" : "Taurus"
+            
         case birthDate.hasSuffix("June"):
-            if (birthDate.prefix(2) >= "21" ) {
-                zodiac = "Cancer"
-            } else {
-                zodiac = "Gemini"
-            }
+            return (birthDate.prefix(2)>="21") ? "Cancer" : "Gemini"
+            
         case birthDate.hasSuffix("July"):
-            if (birthDate.prefix(2) >= "23" ) {
-                zodiac = "Leo"
-            } else {
-                zodiac = "Cancer"
-            }
+           return (birthDate.prefix(2)>="23") ? "Leo" : "Cancer"
+
         case birthDate.hasSuffix("August"):
-            if (birthDate.prefix(2) >= "23" ) {
-                zodiac = "Virgo"
-            } else {
-                zodiac = "Leo"
-            }
+            return (birthDate.prefix(2)>="23") ? "Virgo" : "Leo"
+            
         case birthDate.hasSuffix("September"):
-            if (birthDate.prefix(2) >= "23" ) {
-                zodiac = "Libra"
-            } else {
-                zodiac = "Virgo"
-            }
+            return (birthDate.prefix(2)>="23") ? "Libra" : "Virgo"
+            
         case birthDate.hasSuffix("October"):
-            if (birthDate.prefix(2) >= "23" ) {
-                zodiac = "Scorpio"
-            } else {
-                zodiac = "Libra"
-            }
+            return (birthDate.prefix(2)>="23") ? "Scorpio" : "Libra"
+            
         case birthDate.hasSuffix("November"):
-            if (birthDate.prefix(2) >= "22" ) {
-                zodiac = "Sagittarius"
-            } else {
-                zodiac = "Scorpio"
-            }
+            return (birthDate.prefix(2)>="22") ? "Sagittarius" : "Scorpio"
+            
         default:
-            if (birthDate.prefix(2) >= "23" ) {
-                zodiac = "Capricorn"
-            } else {
-                zodiac = "Sagittarius"
-            }
+            return (birthDate.prefix(2)>="23") ? "Capricorn" : "Sagittarius"
+            
         }
         
     }
     
     @IBAction func showZodiac(_ sender: UIButton) {
-        findZodiac()
+        let zodiac = findZodiac()
         resultLabel.text = "Your zodiac sign is: \(zodiac)"
         birthDateText.text = ""
     }
